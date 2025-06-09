@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <title>Jojo's Cake Atelier</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -12,6 +14,11 @@
             <div class="logo">
                 <a href="index.html"><img src="images/logo.JPG" alt="logo"></a>
             </div>
+            <button class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <ul class="nav-menu">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
@@ -24,7 +31,7 @@
         </div>
 
         <div class="banner">
-            <video autoplay muted loop id="myVideo">
+            <video autoplay muted loop playsinline id="myVideo">
                 <source src="images/vid1.mp4" type="video/mp4">
             </video>
             <div class="overlay">
@@ -96,5 +103,36 @@
 
 
     </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var video = document.getElementById('myVideo');
+        video.play().catch(function(error) {
+            // Autoplay was prevented - try again with user gesture
+            document.body.addEventListener('click', function() {
+                video.play();
+            }, { once: true });
+        });
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // Video autoplay code (existing)
+        var video = document.getElementById('myVideo');
+        video.play().catch(function(error) {
+            document.body.addEventListener('click', function() {
+                video.play();
+            }, { once: true });
+        });
+
+        // Mobile menu toggle (new)
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        hamburger.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+    });
+</script>
 </body>
 </html>
