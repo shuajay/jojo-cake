@@ -1,0 +1,40 @@
+<div class="navbar">
+    <div class="logo">
+        <a href="index.html"><img src="images/logo.JPG" alt="logo"></a>
+    </div>
+    <button class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <ul class="nav-menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="menu.html">Menu</a></li>
+    </ul>
+    <div class="order-button">
+        <a href="order.html"><button>Order Now</button></a>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Video autoplay code (existing)
+        var video = document.getElementById('myVideo');
+        video.play().catch(function(error) {
+            document.body.addEventListener('click', function() {
+                video.play();
+            }, { once: true });
+        });
+
+        // Mobile menu toggle (new)
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        hamburger.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+    });
+</script>
