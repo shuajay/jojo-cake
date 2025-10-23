@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>Events - Jojo's Cake Atelier</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div>
+        <!-- Events Section -->
+        <div class="events-section" id="events">
+            <h2 class="section-title">Events</h2>
+            
+            <!-- Upcoming Events -->
+            <div class="events-container">
+                <h3 class="events-subtitle">Upcoming Events</h3>
+                <div class="upcoming-events">
+                    <p class="no-events">No upcoming events</p>
+                </div>
+            </div>
+
+            <!-- Past Events -->
+            <div class="events-container">
+                <h3 class="events-subtitle">Past Events</h3>
+                
+                <!-- Cozy Crumbs Event -->
+                <div class="event-item">
+                    <h4 class="event-title">Cozy Crumbs</h4>
+                    <div class="event-gallery">
+                        <button class="gallery-item" onclick="openLightbox('images/cozy crumb 1.WEBP', 'Cozy Crumbs Event 1')" aria-label="View Cozy Crumbs Event 1 image">
+                            <img src="images/cozy crumb 1.WEBP" alt="Cozy Crumbs Event 1">
+                            <div class="gallery-overlay">
+                                <i class="fa fa-expand"></i>
+                            </div>
+                        </button>
+                        <button class="gallery-item" onclick="openLightbox('images/cozy crumb 2.WEBP', 'Cozy Crumbs Event 2')" aria-label="View Cozy Crumbs Event 2 image">
+                            <img src="images/cozy crumb 2.WEBP" alt="Cozy Crumbs Event 2">
+                            <div class="gallery-overlay">
+                                <i class="fa fa-expand"></i>
+                            </div>
+                        </button>
+                        <button class="gallery-item" onclick="openLightbox('images/cozy crumb 4.WEBP', 'Cozy Crumbs Event 4')" aria-label="View Cozy Crumbs Event 4 image">
+                            <img src="images/cozy crumb 4.WEBP" alt="Cozy Crumbs Event 4">
+                            <div class="gallery-overlay">
+                                <i class="fa fa-expand"></i>
+                            </div>
+                        </button>
+                        <button class="gallery-item" onclick="openLightbox('images/cozy crumb 5.WEBP', 'Cozy Crumbs Event 5')" aria-label="View Cozy Crumbs Event 5 image">
+                            <img src="images/cozy crumb 5.WEBP" alt="Cozy Crumbs Event 5">
+                            <div class="gallery-overlay">
+                                <i class="fa fa-expand"></i>
+                            </div>
+                        </button>
+                        <button class="gallery-item" onclick="openLightbox('images/cozy crumb 6.WEBP', 'Cozy Crumbs Event 6')" aria-label="View Cozy Crumbs Event 6 image">
+                            <img src="images/cozy crumb 6.WEBP" alt="Cozy Crumbs Event 6">
+                            <div class="gallery-overlay">
+                                <i class="fa fa-expand"></i>
+                            </div>
+                        </button>
+                        <button class="gallery-item" onclick="openLightbox('images/cozy crumb 7.WEBP', 'Cozy Crumbs Event 7')" aria-label="View Cozy Crumbs Event 7 image">
+                            <img src="images/cozy crumb 7.WEBP" alt="Cozy Crumbs Event 7">
+                            <div class="gallery-overlay">
+                                <i class="fa fa-expand"></i>
+                            </div>
+                        </button>
+                        <button class="gallery-item" onclick="openLightbox('images/cozy crumb 8.WEBP', 'Cozy Crumbs Event 8')" aria-label="View Cozy Crumbs Event 8 image">
+                            <img src="images/cozy crumb 8.WEBP" alt="Cozy Crumbs Event 8">
+                            <div class="gallery-overlay">
+                                <i class="fa fa-expand"></i>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- August Escape Event -->
+                <div class="event-item">
+                    <h4 class="event-title">August Escape</h4>
+                    <div class="event-video">
+                        <video controls>
+                            <source src="images/August Escape.MP4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <div class="lightbox-content" onclick="event.stopPropagation()">
+            <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close lightbox">&times;</button>
+            <img id="lightbox-image" src="" alt="">
+            <div class="lightbox-caption" id="lightbox-caption"></div>
+        </div>
+    </div>
+
+    <script src="load-components.js"></script>
+    <script>
+        // Lightbox functionality
+        function openLightbox(imageSrc, caption) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightbox-image');
+            const lightboxCaption = document.getElementById('lightbox-caption');
+            
+            lightboxImage.src = imageSrc;
+            lightboxImage.alt = caption;
+            lightboxCaption.textContent = caption;
+            lightbox.style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+
+        // Close lightbox with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+    </script>
+</body>
+</html>
